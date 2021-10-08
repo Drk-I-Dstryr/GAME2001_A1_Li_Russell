@@ -3,6 +3,13 @@
 #include <iostream>
 using namespace std;
 
+/*
+Created by: Russell Li
+Student Number: 101309707
+Description: Assignment 1 for GAME 2001
+Date: 2021-10-08
+*/
+
 int main()
 {
 	int numSpaces = 5;
