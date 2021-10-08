@@ -13,10 +13,11 @@ public:
 		if (size) // Is this a legal size for an array?
 		{
 			m_maxSize = size;
-			m_array = new T[m_maxSixe]; // Dynamically allocating an array to m_maxSize
+			m_array = new T[m_maxSize]; // Dynamically allocating an array to m_maxSize
 			memset(m_array, 0, sizeof(T) * m_maxSize); // Explicitly set 0 to all elements in the array
 
-			m_growSize = ((growBy > 0) ? growBy : 0);
+			/*m_growSize = ((growBy > 0) ? growBy : 0);*/
+			m_growSize = m_growSize*2;
 		}
 	}
 	// Destructor
@@ -36,7 +37,7 @@ public:
 
 		if (m_numElements >= m_maxSize)
 		{
-			Expand();
+			Array::Expand();
 		}
 
 		int i, k; // i - Index to be inserted. k - Used for shifting purposes
@@ -58,7 +59,7 @@ public:
 		// Step 3: Insert val into the array at index
 		m_array[i] = val;
 		m_numElements++;
-		return i;
+		//return i;
 	}
 	
 	// Searching
@@ -104,63 +105,11 @@ public:
 
 		return -1; // Catch all return from danger
 	}
-	// Overloaded [] operator
-	T& operator[](int index)
-	{
-		assert(m_array != nullptr && index < m_numElements);
-		return m_array[index];
-	}
-	// Clear
-	void clear()
-	{
-		m_numElements = 0; // Ignore (or forgets) all current items in the array
-	}
-	// Gets and Sets
-	int GetSize()
-	{
-		return m_numElements;
-	}
-	int GetMaxSize()
-	{
-		return m_maxSize;
-	}
-	int GetGrowSize()
-	{
-		return m_growSize;
-	}
-	int SetGrowSize(int val)
-	{
-		assert(val >= 0);
-		m_growSize = val;
-	}
+
+
 private:
 	// Private functions
-		// Expansion
-	bool Expand()
-	{
-		if (m_growSize <= 0)
-		{
-			// LEAVE!
-			return false;
-		}
-
-		// Create the new array
-		T* temp = new T[m_maxSize + m_growSize];
-		assert(temp != nullptr);
-
-		// Copy the contents of the original array into the new array
-		memcpy(temp, m_array, sizeof(T) * m_maxSize);
-
-		// Delete the old array
-		delete[] m_array;
-
-		// CLean up variable assignments
-		m_array = temp;
-		temp = nullptr;
-		m_maxSize += m_growSize;
-
-		return true;
-	}
+		
 private:
 	// Private Variables
 	T* m_array; // Pointer to the beginning of the array

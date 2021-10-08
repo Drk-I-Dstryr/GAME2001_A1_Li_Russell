@@ -68,9 +68,35 @@ public:
 		m_growSize = val;
 	}
 
+	bool Expand()
+	{
+		if (m_growSize <= 0)
+		{
+			// LEAVE!
+			return false;
+		}
+
+		// Create the new array
+		T* temp = new T[m_maxSize + m_growSize];
+		assert(temp != nullptr);
+
+		// Copy the contents of the original array into the new array
+		memcpy(temp, m_array, sizeof(T) * m_maxSize);
+
+		// Delete the old array
+		delete[] m_array;
+
+		// CLean up variable assignments
+		m_array = temp;
+		temp = nullptr;
+		m_maxSize += m_growSize;
+
+		return true;
+	}
+
 	T* m_array; // Pointer to the beginning of the array
 
-	//int m_maxSize; // Maximum size of the array
-	//int m_growSize; // Amount the array can grow through expansion
-	//int m_numElements; // Number of items currently in my array
+	int m_maxSize; // Maximum size of the array
+	int m_growSize; // Amount the array can grow through expansion
+	int m_numElements; // Number of items currently in my array
 };
