@@ -1,4 +1,2 @@
 ﻿  Main.cpp
-C:\Users\russe\GAME2001_A1_Li_Russell\GAME2001_A1_Li_Russell\GAME2001_A1_Li_Russell\OrderedArray.h(7,1): error C2955: 'Array': use of class template requires template argument list
-C:\Users\russe\GAME2001_A1_Li_Russell\GAME2001_A1_Li_Russell\GAME2001_A1_Li_Russell\Array.h(6): message : see declaration of 'Array'
-C:\Users\russe\GAME2001_A1_Li_Russell\GAME2001_A1_Li_Russell\GAME2001_A1_Li_Russell\OrderedArray.h(120): message : see reference to class template instantiation 'OrderedArray<T>' being compiled
+  GAME2001_A1_Li_Russell.vcxproj -> C:\Users\russe\GAME2001_A1_Li_Russell\GAME2001_A1_Li_Russell\Debug\GAME2001_A1_Li_Russell.exe
